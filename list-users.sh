@@ -22,7 +22,7 @@ function github_api_get {
 
 # Function to list users with read access to the repository
 function list_users_with_read_access {
-    local endpoint="repos/${REPO_OWNER}/${REPO_NAME}/collaborators"
+    local endpoint="repos/${REPO_OWNER}/${REPO_NAME}"
 
     # Fetch the list of collaborators on the repository
     collaborators="$(github_api_get "$endpoint" | jq -r '.[] | select(.permissions.pull == true) | .login')"
